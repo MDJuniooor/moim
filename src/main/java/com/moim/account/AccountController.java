@@ -27,8 +27,8 @@ public class AccountController {
     }
 
     @GetMapping("/sign-up")
-    public String signUpForm(Model model){
-        model.addAttribute(new SignUpForm()); // signUpForm 이름으로 생성
+    public String signUpForm(Model model) {
+        model.addAttribute(new SignUpForm());
         return "account/sign-up";
     }
 
@@ -37,8 +37,9 @@ public class AccountController {
         if (errors.hasErrors()) {
             return "account/sign-up";
         }
-        accountService.processNewAccount(signUpForm);
 
+        Account account = accountService.processNewAccount(signUpForm);
+        accountService.login(account);
         return "redirect:/";
     }
 
@@ -60,9 +61,7 @@ public class AccountController {
         accountService.login(account);
         model.addAttribute("numberOfUser", accountRepository.count());
         model.addAttribute("nickname", account.getNickname());
-
         return view;
     }
-
 
 }

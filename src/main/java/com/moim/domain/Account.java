@@ -37,7 +37,7 @@ public class Account {
 
     private String location;
 
-    @Lob @Basic(fetch = FetchType.EAGER )
+    @Lob @Basic(fetch = FetchType.EAGER)
     private String profileImage;
 
     private boolean studyCreatedByEmail;
@@ -52,14 +52,13 @@ public class Account {
 
     private boolean studyUpdatedByWeb;
 
-
     public void generateEmailCheckToken() {
         this.emailCheckToken = UUID.randomUUID().toString();
     }
 
     public void completeSignUp() {
-        this.setEmailVerified(true);
-        this.setJoinedAt(LocalDateTime.now());
+        this.emailVerified = true;
+        this.joinedAt = LocalDateTime.now();
     }
 
     public boolean isValidToken(String token) {
