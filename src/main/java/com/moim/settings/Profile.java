@@ -2,8 +2,10 @@ package com.moim.settings;
 
 import com.moim.domain.Account;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class Profile {
 
     private String bio;
