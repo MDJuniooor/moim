@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
-import java.time.LocalDateTime;
-
 @Controller
 @RequiredArgsConstructor
 public class AccountController {
@@ -81,4 +79,5 @@ public class AccountController {
         accountService.sendSignUpConfirmEmail(account);
         return "redirect:/";
     }
+
 }
